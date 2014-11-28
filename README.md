@@ -1,12 +1,10 @@
-Arch Linux 安装指南
-###################
+## Arch Linux 安装指南
 
 archlinux 用户下载 PKGBUILD 文件夹，进入目录在终端下 makepkg 生成安装包，生成后终端下：pacman -U 这个包就可以安装了！
 
 -----
 
-Debian 安装指南
-###############
+## Debian 安装指南
 
 Debian 及基于 Debian 的发行版 (如ubuntu, linuxmint) 请直接下载 mvgather-x.x.x.deb , 然后双击 deb 包就能安装了;
 
@@ -19,8 +17,7 @@ $ sudo apt-get -f install
 
 -----
 
-Fedora 安装指南
-###############
+## Fedora 安装指南
 
 mvgather rpm 包由 @1dot75cm 维护, 目前支持 el7, fc19, fc20, fc21, fc22。
 
