@@ -1,0 +1,36 @@
+# Maintainer: Antonio Rojas
+# Contributor: Jerome Leclanche <jerome.leclanche+arch@gmail.com>
+
+_pkgname=mvgather
+pkgname=$_pkgname-git
+pkgver=3.1.0
+pkgrel=0
+pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data"
+arch=('i686' 'x86_64')
+url="https://github.com/behind1231"
+license=('LGPL')
+depends=('qt5-base' 'qtav-git')
+makedepends=('git')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+source=("git://github.com/behind1231/$_pkgname" "share.tar.gz")
+install=$_pkgname.install
+#sha256sums=("SKIP")
+
+
+
+build() {
+  cd $_pkgname
+  qmake -o Makefile MvGather.pro 
+  sed -i 's/Qt5AV/QtAV/g' Makefile
+  make
+}
+
+package() {
+  	mkdir $pkgdir/usr
+	mkdir $pkgdir/usr/bin
+	cp $_pkgname/MvGather  $pkgdir/usr/bin
+	cp -a share $pkgdir/usr/
+}
+sha256sums=('SKIP'
+            '81d568f1c142bdc4518659f019052479cc0aa7eadf118f1f131d776f5834d6d6')
