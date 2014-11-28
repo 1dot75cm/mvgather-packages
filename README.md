@@ -21,19 +21,27 @@ $ sudo apt-get -f install
 
 mvgather rpm 包由 @1dot75cm 维护, 目前支持 el7, fc19, fc20, fc21, fc22。
 
-fc21, fc22 执行以下命令进行安装:
+fc19, fc20, fc21, fc22 执行以下命令进行安装:
 
 ```
-# yum install dnf-plugins-core
+# yum install dnf-plugins-core http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 # dnf copr enable mosquito/myrepo
+# dnf copr enable mosquito/myrepo-testing
 # dnf install mvgather
 ```
 
-el7, fc19, fc20 还需要添加 [myrepo-testing](https://copr.fedoraproject.org/coprs/mosquito/myrepo-testing) 源:
+更多其他软件，请访问 [myrepo](https://copr.fedoraproject.org/coprs/mosquito/myrepo) 。
+
+-----
+
+## RHEL 7 安装指南
+
+el7 执行以下命令安装:
 
 ```
-# dnf copr enable mosquito/myrepo-testing
-#(el7) yum-config-manager --add-repo=https://copr.fedoraproject.org/coprs/mosquito/myrepo-testing/repo/epel-$(rpm -E %?rhel)/mosquito-myrepo-testing-epel-$(rpm -E %?rhel).repo
+# yum-config-manager --add-repo=https://copr.fedoraproject.org/coprs/mosquito/myrepo/repo/epel-$(rpm -E %?rhel)/mosquito-myrepo-epel-$(rpm -E %?rhel).repo
+# yum-config-manager --add-repo=https://copr.fedoraproject.org/coprs/mosquito/myrepo-testing/repo/epel-$(rpm -E %?rhel)/mosquito-myrepo-testing-epel-$(rpm -E %?rhel).repo
+# yum install epel-release http://li.nux.ro/download/nux/dextop/el$(rpm -E %rhel)/x86_64/nux-dextop-release-0-2.el$(rpm -E %rhel).nux.noarch.rpm
 # yum install mvgather
 ```
 
